@@ -277,3 +277,4 @@ D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\re
 D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\EventTicketingSystem.pdb
 D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\EventTicketingSystem.genruntimeconfig.cache
 D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\ref\EventTicketingSystem.dll
+D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\EventTicketingSystem.sourcelink.json
