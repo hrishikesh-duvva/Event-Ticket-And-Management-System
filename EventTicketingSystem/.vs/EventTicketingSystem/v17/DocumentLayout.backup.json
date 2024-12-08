@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\controllers\\supportticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:controllers\\supportticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\models\\supportticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:models\\supportticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\dtos\\geteventdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:dtos\\geteventdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\dtos\\eventdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:dtos\\eventdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|d:\\hrishi\\eventticketingsystem-updated2\\eventticketingsystem\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCA32524-76CA-46B0-9C4E-9C0DED9FBEAF}|EventTicketingSystem.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SupportTicketController.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Controllers\\SupportTicketController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SupportTicketController.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Controllers\\SupportTicketController.cs",
+              "RelativeToolTip": "Controllers\\SupportTicketController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T10:12:27.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA5wBcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T10:11:40.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SupportTicket.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Models\\SupportTicket.cs",
+              "RelativeDocumentMoniker": "Models\\SupportTicket.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Models\\SupportTicket.cs",
+              "RelativeToolTip": "Models\\SupportTicket.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T10:11:23.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA/wCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T21:47:32.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetEventDto.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\DTOs\\GetEventDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\GetEventDto.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\DTOs\\GetEventDto.cs",
+              "RelativeToolTip": "DTOs\\GetEventDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T17:26:27.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EventDto.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\DTOs\\EventDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\EventDto.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\DTOs\\EventDto.cs",
+              "RelativeToolTip": "DTOs\\EventDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T17:06:09.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EventController.cs",
+              "DocumentMoniker": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Controllers\\EventController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EventController.cs",
+              "ToolTip": "D:\\hrishi\\EventTicketingSystem-updated2\\EventTicketingSystem\\Controllers\\EventController.cs",
+              "RelativeToolTip": "Controllers\\EventController.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAswBQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T14:19:17.096Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

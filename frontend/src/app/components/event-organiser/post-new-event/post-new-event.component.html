@@ -1,0 +1,97 @@
+<div class="post-event">
+  <h1>Post New Event</h1>
+
+  <form (ngSubmit)="submitEvent()">
+    <div class="form-group">
+      <label for="name">Event Name</label>
+      <input type="text" id="name" [(ngModel)]="event.name" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location" [(ngModel)]="event.location" name="location" required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="event.description" name="description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="eventImage">Event Image URL</label>
+      <input type="text" id="eventImage" [(ngModel)]="event.eventImage" name="eventImage" />
+    </div>
+
+    <h3>Schedules</h3>
+    <div class="schedules">
+      <ul *ngIf="event.schedules.length > 0">
+        <li *ngFor="let schedule of event.schedules;let i = index">
+          <button type="button" class="delete-btn" (click)="deleteSchedule(i)">×</button>
+          <strong>{{ schedule.sessionName }}</strong>
+          <span>{{ schedule.startTime | date: 'mediumDate' }} - {{ schedule.endTime | date: 'shortTime' }}</span>
+          <span><strong>Speaker:</strong> {{ schedule.speakerName }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="showScheduleForm" class="schedule-form">
+      <div class="form-group">
+        <label>Session Name</label>
+        <input type="text" [(ngModel)]="newSchedule.sessionName" name="sessionName" required />
+      </div>
+
+      <div class="form-group">
+        <label>Start Time</label>
+        <input type="datetime-local" [(ngModel)]="newSchedule.startTime" name="startTime" required />
+      </div>
+
+      <div class="form-group">
+        <label>End Time</label>
+        <input type="datetime-local" [(ngModel)]="newSchedule.endTime" name="endTime" required />
+      </div>
+
+      <div class="form-group">
+        <label>Speaker Name</label>
+        <input type="text" [(ngModel)]="newSchedule.speakerName" name="speakerName" required />
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea [(ngModel)]="newSchedule.description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>VIP Rows</label>
+        <input type="number" [(ngModel)]="newSchedule.vipRows" name="vipRows" />
+      </div>
+
+      <div class="form-group">
+        <label>General Rows</label>
+        <input type="number" [(ngModel)]="newSchedule.generalRows" name="generalRows" />
+      </div>
+
+      <div class="form-group">
+        <label>Capacity</label>
+        <input type="number" [(ngModel)]="newSchedule.capacity" name="capacity" />
+      </div>
+
+      <div class="form-group">
+        <label>VIP Price</label>
+        <input type="number" [(ngModel)]="newSchedule.vipPrice" name="vipPrice" />
+      </div>
+
+      <div class="form-group">
+        <label>General Price</label>
+        <input type="number" [(ngModel)]="newSchedule.generalPrice" name="generalPrice" />
+      </div>
+
+      <button type="button" (click)="addSchedule()">Add Schedule</button>
+    </div>
+
+    <button *ngIf="!showScheduleForm" type="button" (click)="showAddScheduleForm()">
+      Add Another Schedule
+    </button>
+
+    <button type="submit">Post Event</button>
+  </form>
+</div>

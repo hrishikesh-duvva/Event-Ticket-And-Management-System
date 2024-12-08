@@ -1,0 +1,29 @@
+<div class="dashboard">
+  <h1>Your Events</h1>
+
+  <!-- Show loading spinner while events are being fetched -->
+  <div *ngIf="loading" class="loading-spinner">Loading...</div>
+
+  <!-- Show message when no events are available -->
+  <div *ngIf="!loading && events.length === 0">No events found.</div>
+
+  <!-- Show events when available -->
+  <div *ngIf="!loading && events.length > 0" class="event-list">
+    <div *ngFor="let event of events" class="event-card">
+      <img [src]="event.eventImage" alt="Event Image">
+      <h2>{{ event.name }}</h2>
+      <p>{{ event.location }}</p>
+      <p>{{ event.description }}</p>
+      <ul>
+        <li *ngFor="let schedule of event.schedules">
+          <strong>{{ schedule.sessionName }}</strong> - {{ schedule.startTime | date:'short' }} to {{ schedule.endTime | date:'short' }}
+          <p>{{ schedule.speakerName }} - {{ schedule.description }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="post-event-button" (click)="navigateToPostEvent()">
+    Post New Event
+  </button>
+</div>

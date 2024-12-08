@@ -1,0 +1,13 @@
+<div class="support-form">
+  <h2>Submit an Issue</h2>
+  <form (ngSubmit)="submitIssue()">
+    <textarea
+      [(ngModel)]="issue"
+      name="issue"
+      placeholder="Describe your issue here..."
+      rows="5"
+      required
+    ></textarea>
+    <button type="submit" class="btn-submit">Submit</button>
+  </form>
+</div>

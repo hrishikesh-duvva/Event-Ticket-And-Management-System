@@ -1,0 +1,65 @@
+
+<div class="card">
+  <div *ngIf="!isEventLoaded" class="card-header">
+    <h2>Event Details Not Found :( <br> Wrong ID used maybe :(</h2>
+  </div>
+  <div *ngIf="isEventLoaded" class="card-body">
+    <div class="content-container">
+      <!-- Left Section -->
+      <div class="left-section">
+        <img
+          [src]="event.eventImage"
+          alt="Event Poster"
+          class="event-image"
+        />
+        <h1 class="event-title">{{ event.name }}</h1>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <h3 class="schedules-title">Schedules</h3>
+        <div class="schedule-grid">
+          <div
+            *ngFor="let schedule of schedules"
+            class="schedule-card"
+            (click)="onSelectSchedule(schedule.scheduleId)"
+            [class.selected]="schedule.scheduleId === selectedScheduleId"
+          >
+            <p><strong>Session:</strong> {{ schedule.sessionName }}</p>
+            <p><strong>Start Time:</strong> {{ schedule.startTime }}</p>
+            <p><strong>End Time:</strong> {{ schedule.endTime }}</p>
+            <p><strong>Guest:</strong> {{ schedule.speakerName }}</p>
+            <!-- <p><strong>Capacity:</strong> {{ schedule.capacity }}</p> -->
+          </div>
+        </div>
+
+        <!-- Conditionally Render Buttons -->
+        <button
+          *ngIf="userRole !== 'Admin'"
+          class="btn btn-primary mt-4 book-ticket-button"
+          [disabled]="!selectedScheduleId"
+          (click)="onBookTickets()"
+        >
+          Book Tickets
+        </button>
+
+        <button
+          *ngIf="userRole === 'Admin'"
+          class="btn btn-danger mt-4 delete-schedule-button"
+          [disabled]="!selectedScheduleId"
+          (click)="onDeleteSchedule()"
+        >
+          Delete Schedule
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-outline-secondary back-button" (click)="router.navigate(['/'])">
+      <i class="fa fa-chevron-left"></i> Back
+    </button>
+  </div>
+</div>

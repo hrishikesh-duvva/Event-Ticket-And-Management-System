@@ -1,0 +1,131 @@
+/* Base styles for the sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #1e1e2f; /* Dark sidebar background */
+  color: #ffffff; /* Light text for contrast */
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  z-index: 1000;
+}
+
+.sidebar.active {
+  transform: translateX(0); /* Slide in the sidebar */
+}
+
+/* Overlay styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dimmed background */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
+  z-index: 999;
+}
+
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Sidebar header */
+.sidenavbar {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.sidenavbar h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+/* Subnavbar for login and rewards */
+.sidesubnavbar {
+  padding: 20px;
+  text-align: center;
+}
+
+.sidesubnavbar img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.sidesubnavbar p {
+  font-size: 0.9rem;
+  color: #dddddd;
+  margin-bottom: 10px;
+}
+
+.sidesubnavbar .login {
+  background-color:#2B2B2B;
+    color:  #F5E3C0;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidesubnavbar .login:hover {
+  background-color: #F5E3C0;/* Darker on hover */
+  color: black;
+}
+
+/* Sidebar items */
+a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: #ffffff;
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-bottom: 1px solid #444; /* Dividers */
+}
+
+a:hover {
+  background-color: #33334d; /* Slight highlight */
+  color:  #F5E3C0; /* Accent color for hover */
+}
+
+a.btn-disabled {
+  opacity: 0.5;
+  pointer-events: none; /* Disable interaction */
+}
+
+.lefticon {
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+
+.text {
+  flex: 1; /* Push right icon to the edge */
+}
+
+.text .subtext {
+  font-size: 0.8rem;
+  color: #bbbbbb; /* Muted subtext */
+}
+
+.righticon {
+  font-size: 1.2rem;
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px; /* Slightly narrower on smaller screens */
+  }
+}

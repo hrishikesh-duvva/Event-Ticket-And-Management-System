@@ -1,0 +1,61 @@
+/* Container for the carousel */
+custom-carousel-content {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+p-carousel {
+  width: 100%;
+  max-width: 100%;  /* Adjust width as needed */
+  margin: 0 auto;   /* Center the carousel */
+  padding:20px;
+}
+
+/* Style for individual carousel items */
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0e;  /* Light background for better contrast */
+  border-radius: 10px;  /* Round the corners */
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */
+  transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
+}
+
+.carousel-item:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Style for images inside the carousel */
+.carousel-image {
+  width: 100%;
+  height: auto;  /* Round the corners of the image */
+  object-fit: cover;  /* Ensure the image covers the area without distorting */
+}
+
+/* Ensure responsiveness */
+@media (max-width: 1024px) {
+  p-carousel {
+    width: 90%;  /* Adjust for smaller screens */
+  }
+  .carousel-item {
+    flex-direction: column;  /* Stack the image vertically */
+    padding: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  p-carousel {
+    width: 100%;
+  }
+  .carousel-item {
+    padding: 2px;
+  }
+  .carousel-image {
+    height: 200px;  /* Set a fixed height for smaller screens */
+  }
+}

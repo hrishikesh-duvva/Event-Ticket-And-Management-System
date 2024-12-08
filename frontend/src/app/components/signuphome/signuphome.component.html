@@ -1,0 +1,32 @@
+<div class="signup-container">
+  <h2>How do you want to use Event Portal?</h2>
+  <p>We’ll personalize your setup experience accordingly.</p>
+
+  <div class="options-container">
+    <!-- Customer Option -->
+    <div class="option-card" 
+         [ngClass]="{'selected': selectedOption === 'Customer'}"
+         (click)="selectOption('Customer')">
+      <div class="icon">
+        <i class="fas fa-ticket-alt"></i>
+      </div>
+      <p class="option-text">I’m here to book tickets</p>
+    </div>
+
+    <!-- Event Organizer Option -->
+    <div class="option-card" 
+         [ngClass]="{'selected': selectedOption === 'EventOrganizer'}"
+         (click)="selectOption('EventOrganizer')">
+      <div class="icon">
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <p class="option-text">I’m here to organize an event</p>
+    </div>
+  </div>
+
+  <button (click)="createAccount()" 
+          class="create-account-btn"
+          [disabled]="!selectedOption">
+    Create Account
+  </button>
+</div>

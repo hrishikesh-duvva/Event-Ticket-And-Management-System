@@ -1,0 +1,116 @@
+.dashboard {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.loading-spinner {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.event-card {
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.event-card h2 {
+  font-size: 1.6rem;
+  color: #007bff;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.event-card p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.event-card p:first-of-type {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.event-card ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.event-card ul li {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.event-card ul li strong {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.event-card ul li p {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.post-event-button {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.post-event-button:hover {
+  background-color: #0056b3;
+}
+
+.post-event-button:active {
+  transform: scale(0.98);
+}

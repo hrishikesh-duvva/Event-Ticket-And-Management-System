@@ -1,0 +1,94 @@
+<div *ngIf="!isAuthenticated" class="not-authenticated">
+  <p>{{ notAuthenticatedMessage }}</p>
+  <button class="btn btn-primary" (click)="navigateToRegistration()">Register</button>
+</div>
+
+<div *ngIf="isAuthenticated" class="seat-container">
+  <h1>Seat Selection</h1>
+
+  <!-- Seating Grid -->
+  <div class="seating-grid">
+    <div *ngFor="let row of organizedSeats">
+      <div class="row">
+        <div
+          *ngFor="let seat of row"
+          class="seat"
+          [class.booked]="seat.availabilityStatus === 1"
+          [class.selected]="selectedSeats.includes(seat)"
+          [class.vip]="seat.section === 'VIP'"
+          [class.general]="seat.section === 'General'"
+          (click)="toggleSeatSelection(seat)"
+        >
+          {{ seat.seatNumber }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Info, Discounts, and Payment Section -->
+  <!-- Ticket Info, Discounts, and Payment Section -->
+<div class="info-and-payment">
+  <!-- Ticket Info -->
+  <div class="ticket-info">
+    <h2 class="section-heading">🎟️ Ticket Information</h2>
+    <div class="info-details">
+      <p><strong>Selected Ticket Type:</strong> {{ selectedTicketType || 'None' }}</p>
+      <p><strong>Total Price:</strong> ₹{{ totalPrice }}</p>
+    </div>
+  </div>
+
+  <!-- Discount Section -->
+  <div class="discount-section">
+    <h2>💸 Available Discounts</h2>
+    <div *ngIf="discounts.length > 0; else noDiscounts">
+      <ul class="discount-list">
+        <li *ngFor="let discount of discounts" class="discount-item">
+          <span>
+            <strong>{{ discount.discountCode }}</strong> - 
+            {{ discount.discountPercentage }}% off
+          </span>
+          <button
+            class="btn discount-btn"
+            [ngClass]="{
+              'btn-secondary': appliedDiscount?.discountId !== discount.discountId,
+              'btn-success': appliedDiscount?.discountId === discount.discountId
+            }"
+            (click)="applyDiscount(discount)"
+          >
+            {{ appliedDiscount?.discountId === discount.discountId ? 'Remove' : 'Apply' }}
+          </button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noDiscounts>
+      <p>No discounts available for this event.</p>
+    </ng-template>
+  </div>
+  
+  <!-- Payment Method -->
+  <div class="payment-method">
+    <h2 class="section-heading">💳 Payment Method</h2>
+    <label for="payment">Select Payment Method:</label>
+    <select id="payment" [(ngModel)]="paymentMethod" class="payment-select">
+      <option value="" disabled selected>Select</option>
+      <option value="CreditCard">Credit Card</option>
+      <option value="DebitCard">Debit Card</option>
+      <option value="UPI">UPI</option>
+      <option value="NetBanking">Net Banking</option>
+    </select>
+  </div>
+
+  <!-- Book Button -->
+  <div class="action-container">
+    <p class="selected-seats"><strong>Selected Seats:</strong> {{ selectedSeatNumbers }}</p>
+    <button
+      class="btn btn-primary book-ticket-button"
+      [disabled]="selectedSeats.length === 0 || !paymentMethod"
+      (click)="bookTickets(paymentMethod)"
+    >
+      🎟️ Book Tickets
+    </button>
+  </div>
+</div>
+
+</div>

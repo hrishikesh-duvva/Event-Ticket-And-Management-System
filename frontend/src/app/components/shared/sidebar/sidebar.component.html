@@ -1,0 +1,27 @@
+<div class="sidenavbar" *ngIf="user">
+  <h1>Hi {{ user?.username }}</h1> <!-- Use lowercase 'username' -->
+  <p>{{ user?.email }}</p> <!-- Use lowercase 'email' -->
+</div>
+
+<div class="sidesubnavbar">
+  <button *ngIf="!isLoggedIn" class="login" [routerLink]="['/signuphome']">Login / Register</button>
+  <button *ngIf="isLoggedIn" class="login" (click)="logout()">Log Out</button>
+
+</div>
+
+<ng-container *ngFor="let item of sidebarItems">
+  <a [href]="item.link" [class.btn-disabled]="item.disabled">
+    <div class="lefticon">
+      <ion-icon [name]="item.icon"></ion-icon>
+    </div>
+    <div class="text">
+      {{ item.text }}
+      <div class="subtext" *ngIf="item.subtext">{{ item.subtext }}</div>
+    </div>
+    <div class="righticon">
+      <ion-icon [name]="item.disabled ? 'lock-closed-outline' : 'chevron-forward-outline'"></ion-icon>
+    </div>
+  </a>
+</ng-container>
+
+<div class="overlay" [class.active]="isActive" (click)="toggleSidebar()"></div>

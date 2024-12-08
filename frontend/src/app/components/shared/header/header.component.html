@@ -1,0 +1,95 @@
+<header>
+    <div class="bms-header">
+      <div class="bms-header-logo">
+        <img src="assets/images/Logo.png" alt="Logo" class="header-logo" />
+      </div>
+      
+      <div class="bms-header-image">
+        <svg viewBox="0 0 88 26" height="40" width="130" xmlns="http://www.w3.org/2000/svg">
+          <title>TICUT</title>
+          <g fill="none">
+            <path d="..." fill="#FFF"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="bms-search-bar vertical-center">
+        <form class="bms-search-bar-form">
+          <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+            <title>Search</title>
+            <path d="..." fill="#777"></path>
+          </svg>
+          <input
+            type="text"
+            id="HeaderSeachBar"
+            name="searchbar"
+            placeholder="Search for Events"
+            size="70"
+            (keyup)="onKey($event)"
+          />
+        </form>
+      </div>
+  
+      <div class="bms-right vertical-center">
+        <div class="bms-location vertical-center">
+          <div class="dropdown">
+            <label for="city"></label>
+            <select id="city" [(ngModel)]="selectedCity">
+              <option value="" disabled>Select a city</option>
+              <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="profile-container" *ngIf="user; else signInButton">
+          <img
+            src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+            alt="Profile"
+            class="profile-img"
+            title="Hi {{ user.username }} ({{ user.email }})"
+          />
+        </div>
+  
+        <ng-template #signInButton>
+          <button *ngIf="!isLoggedIn" class="bms-signin" [routerLink]="['/signuphome']">Sign in</button>
+          <button *ngIf="isLoggedIn" class="bms-signin" (click)="logout()">Log Out</button>
+        </ng-template>
+  
+        <button class="dark-mode-toggle" (click)="toggleTheme()">Toggle Dark Mode</button>
+
+
+        <div class="bms-hamburger-menu vertical-center" (click)="toggleSidebar()">
+          <svg width="24px" height="16px" xmlns="http://www.w3.org/2000/svg">
+            <g fill-rule="nonzero" stroke="#FFF" stroke-width="1.5" fill="none" stroke-linecap="round">
+              <path d="M1.611 1h20.614M1.611 7h20.614M1.611 13h20.614"></path>
+            </g>
+          </svg>
+        </div>
+  
+      </div>
+    </div>
+  
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" [class.active]="isSidebarActive" (click)="toggleSidebar()"></div>
+    <div class="sidebar" [class.active]="isSidebarActive">
+      <app-sidebar></app-sidebar>
+    </div>
+  
+    <div class="header-menu">
+      <div class="header-menu-left">
+        <div class="header-menu-left-elements">Music</div>
+        <div class="header-menu-left-elements">Stream<sup class="new-logo">NEW</sup></div>
+        <div class="header-menu-left-elements">Events</div>
+        <div class="header-menu-left-elements">Plays</div>
+        <div class="header-menu-left-elements">Sports</div>
+        <div class="header-menu-left-elements">Activities</div>
+        <div class="header-menu-left-elements">Workshops</div>
+      </div>
+      <div class="header-menu-right">
+        <div class="header-menu-right-elements">ListYourEvents<sup class="new-logo">NEW</sup></div>
+        <div class="header-menu-right-elements">Seminars</div>
+        <div class="header-menu-right-elements">Offers</div>
+        <div class="header-menu-right-elements">Gift Cards</div>
+      </div>
+    </div>
+  </header>
+  

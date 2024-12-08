@@ -1,0 +1,20 @@
+<div class="issues-container">
+  <h2>All Issues</h2>
+  <div *ngFor="let ticket of issues" class="issue-card">
+    <div class="issue-details">
+      <p><strong>User:</strong> {{ ticket.user?.username || 'Unknown' }}</p>
+      <p><strong>Email:</strong> {{ ticket.user?.email || 'Unknown' }}</p>
+      <p><strong>Issue:</strong> {{ ticket.issue }}</p>
+      <p><strong>Status:</strong> {{ ticket.status }}</p>
+    </div>
+    <div class="action-container">
+      <button
+        *ngIf="ticket.status === 'Pending'"
+        (click)="resolveIssue(ticket.id)"
+        class="resolve-button"
+      >
+        Mark as Resolved
+      </button>
+    </div>
+  </div>
+</div>

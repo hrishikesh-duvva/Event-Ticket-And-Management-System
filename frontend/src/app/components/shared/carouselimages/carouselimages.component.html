@@ -1,0 +1,20 @@
+<p-carousel 
+    [value]="slides" 
+    [numVisible]="1" 
+    [numScroll]="1" 
+    [circular]="true" 
+    [autoplayInterval]="3000"
+    [responsiveOptions]="responsiveOptions"
+    [contentClass]="'custom-carousel-content'"
+    class="custom-carousel-container"
+    [showIndicators]="false">
+    
+    <ng-template let-slide pTemplate="item">
+        <div class="carousel-item">
+            <div class="carousel-inner">
+                <img [src]="slide.image" alt="Product Image" class="carousel-image" />
+            </div>
+        </div>
+    </ng-template>
+
+</p-carousel>
