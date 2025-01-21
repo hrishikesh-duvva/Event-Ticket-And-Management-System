@@ -20,7 +20,6 @@ namespace EventTicketingSystem.Controllers
         [HttpGet("event/{eventId}/schedule/{scheduleId}")]
         public async Task<ActionResult<IEnumerable<Seating>>> GetSeatingForEventAndSchedule(int eventId, int scheduleId)
         {
-            // Ensure the schedule exists for the given eventId and scheduleId
             var schedule = await _context.Schedules
                 .FirstOrDefaultAsync(s => s.EventId == eventId && s.ScheduleId == scheduleId);
 
@@ -29,7 +28,6 @@ namespace EventTicketingSystem.Controllers
                 return NotFound("Schedule not found for the given EventId and ScheduleId.");
             }
 
-            // Fetch the seating for the specific schedule
             var seating = await _context.Seatings
                 .Where(s => s.ScheduleId == scheduleId)
                 .ToListAsync();
@@ -39,7 +37,7 @@ namespace EventTicketingSystem.Controllers
                 return NotFound("No seating found for the given ScheduleId.");
             }
 
-            return Ok(seating); // Return the seating data if found
+            return Ok(seating); 
         }
 
     }

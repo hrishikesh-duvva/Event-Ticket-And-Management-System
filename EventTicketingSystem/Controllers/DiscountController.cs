@@ -121,7 +121,7 @@ public class DiscountController : ControllerBase
     public async Task<IActionResult> DeleteDiscount(int id)
     {
         var discountToDelete = await _context.Discounts
-            .Include(d => d.Schedule)  // Ensure Schedule is loaded for cascading deletions
+            .Include(d => d.Schedule) 
             .FirstOrDefaultAsync(d => d.DiscountId == id);
 
         if (discountToDelete == null)

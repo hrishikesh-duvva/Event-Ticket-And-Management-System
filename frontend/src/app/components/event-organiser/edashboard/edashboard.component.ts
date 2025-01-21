@@ -27,4 +27,10 @@ export class EdashboardComponent implements OnInit {
   navigateToPostEvent() {
     this.router.navigate(['/event-organiser/post-event']);
   }
+
+  editSchedules(eventId: number): void {
+    console.log(eventId);
+    this.router.navigate(['/event-organiser/edit-schedules', eventId]);
+  }
+  
 }

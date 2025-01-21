@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SeatService {
-  private seatingUrl = 'http://localhost:5095/api/seating';
-  private bookingUrl = 'http://localhost:5095/api/TicketBooking/book-ticket';
+  private seatingUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/seating';
+  private bookingUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/TicketBooking/book-ticket';
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +16,7 @@ export class SeatService {
   }
 
   getTicketPrices(eventId: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:5095/api/tickettypes/event/${eventId}`);
+    return this.http.get<any>(`https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/tickettypes/event/${eventId}`);
   }
 
   bookTickets(
@@ -25,7 +25,8 @@ export class SeatService {
     seatIds: number[],
     ticketTypeId: number,
     quantity: number,
-    paymentMethod: string
+    paymentMethod: string,
+    discountId: number | null
   ): Observable<any> {
     const body = {
       customerId,
@@ -34,8 +35,11 @@ export class SeatService {
       ticketTypeId,
       quantity,
       paymentMethod,
+      discountId,
     };
-
+  
     return this.http.post<any>(this.bookingUrl, body);
   }
+  
+  
 }

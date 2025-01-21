@@ -83,12 +83,23 @@
     <p class="selected-seats"><strong>Selected Seats:</strong> {{ selectedSeatNumbers }}</p>
     <button
       class="btn btn-primary book-ticket-button"
-      [disabled]="selectedSeats.length === 0 || !paymentMethod"
+      [disabled]="loading || selectedSeats.length === 0 || !paymentMethod"
       (click)="bookTickets(paymentMethod)"
     >
       🎟️ Book Tickets
     </button>
   </div>
 </div>
+
+<div *ngIf="bookedTickets" class="booked-tickets">
+  <h2>🎟️ Booked Tickets</h2>
+  <p><strong>Schedule ID:</strong> {{ bookedTickets.schedule }}</p>
+  <p><strong>Seats:</strong> {{ bookedSeatNumbers }}</p>
+  <p><strong>Ticket Type:</strong> {{ bookedTickets.ticketType }}</p>
+  <p><strong>Total Price:</strong> ₹{{ bookedTickets.totalPrice }}</p>
+  <p><strong>Payment Method:</strong> {{ bookedTickets.paymentMethod }}</p>
+</div>
+
+
 
 </div>

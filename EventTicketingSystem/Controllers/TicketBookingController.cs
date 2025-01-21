@@ -24,7 +24,8 @@ namespace EventTicketingSystem.Controllers
                 request.SeatIds,
                 request.TicketTypeId,
                 request.Quantity,
-                request.PaymentMethod
+                request.PaymentMethod,
+                request.DiscountId
             );
 
             if (result.success)

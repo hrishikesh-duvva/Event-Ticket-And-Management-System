@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "EventTicketingSystem.Controllers.AuthController",
+    "Method": "CheckPhoneNumber",
+    "RelativePath": "api/auth/checkPhoneNumber",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkPhoneNumberDto",
+        "Type": "EventTicketingSystem.DTOs.CheckPhoneNumberDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventTicketingSystem.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/auth/login",
     "HttpMethod": "POST",
@@ -26,6 +42,22 @@
       {
         "Name": "registerDto",
         "Type": "EventTicketingSystem.DTOs.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventTicketingSystem.Controllers.AuthController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/auth/updatePassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updatePasswordDto",
+        "Type": "EventTicketingSystem.DTOs.UpdatePasswordDto",
         "IsRequired": true
       }
     ],

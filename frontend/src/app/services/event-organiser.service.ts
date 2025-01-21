@@ -28,7 +28,7 @@ export class EventOganiserService {
     const userId = this.getCustomerIdFromToken();  // Get user ID from token
 
     if (userId !== -1) {
-      const url = `http://localhost:5095/api/events/user/${userId}`;  // Use userId to fetch events
+      const url = `https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/events/user/${userId}`;  // Use userId to fetch events
       const token = localStorage.getItem('token');  // Get the token
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       return this.http.get<any>(url, { headers }).pipe(

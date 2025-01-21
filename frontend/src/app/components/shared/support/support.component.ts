@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SupportComponent {
   issue: string = ''; // User's issue input
-  apiUrl = 'http://localhost:5095/api/SupportTicket';
+  apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/SupportTicket';
 
   constructor(private http: HttpClient) {}
 

@@ -25,7 +25,7 @@ export interface Issue {
 })
 export class SdashboardComponent implements OnInit {
   issues: Issue[] = []; // Use the Issue interface
-  apiUrl = 'http://localhost:5095/api/SupportTicket';
+  apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/SupportTicket';
 
   constructor(private http: HttpClient) {}
 

@@ -38,4 +38,8 @@
     <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">
       Login
     </button>
+
+    <div *ngIf="loginMessage" [class.success-message]="isSuccess" [class.error-message]="!isSuccess">
+      {{ loginMessage }}
+    </div>
 </form>

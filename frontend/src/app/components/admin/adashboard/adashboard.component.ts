@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../../services/admin.service';
 import { CommonModule } from '@angular/common';
-
-interface Event {
-  id: number;
-  name: string;
-  status: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  status: string;
-}
+import { EventService } from '../../../services/event.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-adashboard',
@@ -23,34 +12,40 @@ interface User {
 })
 export class AdashboardComponent  implements OnInit {
 
-  totalEvents = 0;
-  activeEvents = 0;
-  totalUsers = 0;
-  activeUsers = 0;
-  suspiciousEvents: Event[] = [];
-  events: Event[] = [];
-  users: User[] = [];
+  events: any[] = []; // List of events
 
-  constructor(private adminService: AdminService) {}
+  constructor(private eventService: EventService, private http: HttpClient) {}
 
-  ngOnInit() {
-    this.events = this.adminService.getEvents();
-    this.users = this.adminService.getUsers();
-
-    this.totalEvents = this.events.length;
-    this.activeEvents = this.events.filter((event) => event.status === 'Active').length;
-    this.suspiciousEvents = this.events.filter((event) => event.status === 'Suspicious');
-
-    this.totalUsers = this.users.length;
-    this.activeUsers = this.users.filter((user) => user.status === 'Active').length;
+  ngOnInit(): void {
+    this.loadEvents();
   }
 
-  deleteEvent(id: number) {
-    this.adminService.deleteEvent(id);
+  loadEvents(): void {
+    this.eventService.getEvents().subscribe((res) => {
+      this.events = res;
+    });
+  }
 
-    // Update suspicious events and total events count
-    this.suspiciousEvents = this.suspiciousEvents.filter((event) => event.id !== id);
-    this.totalEvents--;
+  onDeleteEvent(eventId: number): void {
+    if (confirm('Are you sure you want to delete this event?')) {
+      const headers = new HttpHeaders().set(
+        'Authorization',
+        `Bearer ${localStorage.getItem('token')}`
+      );
+
+      const deleteUrl = `https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/events/${eventId}`;
+      this.http.delete(deleteUrl, { headers }).subscribe({
+        next: () => {
+          alert('Event deleted successfully!');
+          // Remove the event from the list
+          this.events = this.events.filter((event) => event.eventId !== eventId);
+        },
+        error: (err) => {
+          console.error('Failed to delete event:', err);
+          alert('Failed to delete the event.');
+        },
+      });
+    }
   }
 
 }

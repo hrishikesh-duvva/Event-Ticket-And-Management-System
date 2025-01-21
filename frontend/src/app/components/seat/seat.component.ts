@@ -33,6 +33,10 @@ export class SeatComponent implements OnInit {
   discountCode: string = ''; // Input discount code
   appliedDiscount: any = null; // Applied discou
 
+  bookedTickets: any = null;
+
+  loading: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private seatService: SeatService,
@@ -96,7 +100,9 @@ export class SeatComponent implements OnInit {
         if (res && res.$values) {
           // Populate ticketPrices with type as key and price as value
           res.$values.forEach((ticketType: any) => {
-            this.ticketPrices[ticketType.ticketTypee === 0 ? 'VIP' : 'General'] = ticketType.price;
+            // this.ticketPrices[ticketType.ticketTypee === 0 ? 'VIP' : 'General'] = ticketType.price;
+            const type = ticketType.ticketTypee === 0 ? 'VIP' : 'General';
+          this.ticketPrices[type] = ticketType.price;
           });
         } else {
           console.error('No ticket prices data found');
@@ -109,20 +115,26 @@ export class SeatComponent implements OnInit {
   }
 
   fetchDiscounts(): void {
-    this.http.get<any>(`http://localhost:5095/api/discounts/event/${this.eventId}`).subscribe(
+    this.http.get<any>(`https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/discounts/${this.eventId}`).subscribe(
       (res) => {
-        if (res && res.$values) {
-          this.discounts = res.$values; // Extract discounts array from $values
-          console.log('Fetched Discounts:', this.discounts); // Debugging log
+        if (Array.isArray(res)) {
+          // Response is an array
+          this.discounts = res;
+        } else if (res && res.$id) {
+          // Response is a single object
+          this.discounts = [res]; // Wrap it in an array for consistency
         } else {
-          console.error('No discounts data found in response.');
+          console.error('No discounts data found.');
+          this.discounts = []; // Set an empty array if no discounts are found
         }
+        console.log('Fetched Discounts:', this.discounts); // Debugging log
       },
       (err) => {
         console.error('Error fetching discounts:', err);
       }
     );
   }
+  
 
 
   applyDiscount(discount: any): void {
@@ -204,6 +216,10 @@ export class SeatComponent implements OnInit {
     throw new Error('User not authenticated: Token not found');
   }
   
+  get bookedSeatNumbers(): string {
+    return this.bookedTickets?.seats?.map((seat: any) => seat.seatNumber).join(', ') || '';
+  }
+  
 
   bookTickets(paymentMethod: string): void {
     if (this.selectedSeats.length > 0) {
@@ -211,6 +227,7 @@ export class SeatComponent implements OnInit {
       const seatIds = this.selectedSeats.map((s) => s.seatingId);
       const ticketTypeId = this.selectedSeats[0].ticketTypeId; // Assuming all selected seats are of the same type
       const quantity = this.selectedSeats.length;
+      const discountId = this.appliedDiscount ? this.appliedDiscount.discountId : null;
   
       const payload = {
         customerId,
@@ -219,34 +236,45 @@ export class SeatComponent implements OnInit {
         ticketTypeId,
         quantity,
         paymentMethod,
+        discountId,
       };
   
-      // Log the payload
-      console.log('Payload being sent:', payload);
+      console.log('Payload being sent:', payload); 
   
-      // Call the API
       this.seatService.bookTickets(
         payload.customerId,
         payload.scheduleId,
         payload.seatIds,
         payload.ticketTypeId,
         payload.quantity,
-        payload.paymentMethod
+        payload.paymentMethod,
+        payload.discountId
       ).subscribe(
         (res) => {
           console.log('Response:', res); // Log the success response
           alert('Tickets booked successfully!');
-          this.router.navigate(['/']); // Redirect to home or confirmation page
+          // this.router.navigate(['/']); // Redirect to home or confirmation page
+          this.bookedTickets = {
+            schedule: this.scheduleId,
+            seats: this.selectedSeats,
+            totalPrice: this.totalPrice,
+            ticketType: this.selectedTicketType,
+            paymentMethod,
+          };
+          this.loading = false;
         },
         (err) => {
           console.error('Error during booking:', err); // Log the error
           alert('Error booking tickets: ' + err.message);
+          this.loading = false;
         }
       );
     } else {
       alert('No seats selected!');
     }
   }
+
+  
 
   navigateToRegistration(): void {
     this.router.navigate(['/Customer/register']);

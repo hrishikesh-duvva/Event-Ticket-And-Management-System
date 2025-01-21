@@ -25,10 +25,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp", policy =>
     {
-        policy.WithOrigins("http://localhost:4200") // Allow Angular development server
-              .AllowAnyHeader()                   // Allow any headers (e.g., Content-Type, Authorization)
-              .AllowAnyMethod()                   // Allow all HTTP methods (GET, POST, PUT, DELETE)
-              .AllowCredentials();                // Allow cookies or credentials if required
+        policy.SetIsOriginAllowed(_ => true)
+              .AllowAnyHeader()                   
+              .AllowAnyMethod()                   
+              .AllowCredentials();                 
     });
 });
 
@@ -59,9 +59,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IPaymentService, PaymentService>(); // Register the payment service
-builder.Services.AddSingleton<DummyPaymentGateway>();          // Register the dummy payment gateway
-builder.Services.AddScoped<TicketBookingService>();            // Register the ticket booking service
+builder.Services.AddScoped<IPaymentService, PaymentService>(); // the payment service
+builder.Services.AddSingleton<DummyPaymentGateway>();          // the dummy payment gateway
+builder.Services.AddScoped<TicketBookingService>();            // the ticket booking service
 
 
 

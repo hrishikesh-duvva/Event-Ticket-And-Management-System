@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit {
   user: any = null; // Store user details here
   isActive = false; // Sidebar active state
   isLoggedIn =false;
-  apiUrl = 'http://localhost:5095/api/User/'; // Base URL for User API
+  apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/User/'; // Base URL for User API
 
   sidebarItems = [
     {
@@ -86,8 +86,7 @@ export class SidebarComponent implements OnInit {
       const decodedToken = this.decodeJwt(token);
       console.log('Decoded Token:', decodedToken); // Debug log
 
-      if (decodedToken && (decodedToken.UserRole === 'Customer' || decodedToken.UserRole==='Admin')) {
-        console.log('Role is Customer, fetching user profile...');
+      if (decodedToken ) {
         this.fetchUserProfile(token);
         this.isLoggedIn=true;
       } else {

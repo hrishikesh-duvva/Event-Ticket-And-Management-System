@@ -1,0 +1,17 @@
+html,
+body {
+  height: 100%; /* Ensure the body stretches to the full height of the viewport */
+  margin: 0;
+}
+
+.main-content {
+  min-height: calc(100vh - 60px - 50px); /* Full viewport height minus header and footer height */
+  margin-bottom: 50px; /* Space for the footer height */
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}

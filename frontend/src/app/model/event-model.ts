@@ -15,6 +15,7 @@ export interface Schedule {
     generalPrice: number;  // Price per seat for General
   }
   export interface EventModel {
+    eventId: number;
     name: string;           // Name of the event
     location: string;       // Location of the event
     description: string;    // Description of the event

@@ -14,5 +14,6 @@
         public int Capacity { get; set; }  // The schedule-specific capacity
         public decimal VIPPrice { get; set; }
         public decimal GeneralPrice { get; set; }
+        public List<DiscountDto>? Discounts { get; set; }
     }
 }

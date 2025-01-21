@@ -24,24 +24,36 @@ export class HomeEventListComponent  implements OnInit {
 
 
   ngOnInit(): void {
-      this.eventService.getEvents().subscribe(res =>{
-        this.events = res;
-       this.filteredEvents = res;
-      });
-
-
-       this.eventService.currentSearchNameChange.subscribe(value =>{
-        this.currentSearchedEvent = value;
-        this.filteredEvents = this.eventService.filterByName(this.events, value);
-      });
-
-      this.adjustNumVisible(); // Set the initial value
-    }
+    this.eventService.getEvents().subscribe((res) => {
+      this.events = res;
+      this.filteredEvents = [...this.events]; // Use a fresh copy
+      this.adjustNumVisible(this.filteredEvents.length);
+    });
+  
+    this.eventService.currentSearchNameChange.subscribe((searchTerm) => {
+      if (searchTerm) {
+        this.filteredEvents = this.events.filter(
+          (event) =>
+            event.name.toLowerCase().includes(searchTerm) ||
+            event.location.toLowerCase().includes(searchTerm)
+            
+        );
+      } else {
+        this.filteredEvents = [...this.events]; // Reset to original events
+        
+      }
+      this.adjustNumVisible(this.filteredEvents.length);
+    });
+  
+    
+  }
+  
+  
   
     // Adjust the number of visible items based on screen width
     @HostListener('window:resize', ['$event'])
     onResize(event: Event): void {
-      this.adjustNumVisible();
+      this.adjustNumVisible(this.filteredEvents.length);
     }
   
 
@@ -52,17 +64,18 @@ export class HomeEventListComponent  implements OnInit {
       alert('Please select an option before creating an account.');
     }
   }
-  private adjustNumVisible(): void {
+  private adjustNumVisible(fileteredEventlength:number): void {
     const screenWidth = window.innerWidth;
-
+    console.log(fileteredEventlength);
     if (screenWidth >= 1200) {
-      this.numVisible = 5; // Large screens
+      this.numVisible = Math.min(fileteredEventlength, 5); // Show up to 5 events
+      
     } else if (screenWidth >= 992) {
-      this.numVisible = 4; // Medium screens
+      this.numVisible = Math.min(fileteredEventlength, 4); // Show up to 4 events
     } else if (screenWidth >= 768) {
-      this.numVisible = 3; // Small screens
+      this.numVisible = Math.min(fileteredEventlength, 3); // Show up to 3 events
     } else {
-      this.numVisible = 2; // Extra-small screens
+      this.numVisible = Math.min(fileteredEventlength, 2); // Show up to 2 events
     }
   }
 

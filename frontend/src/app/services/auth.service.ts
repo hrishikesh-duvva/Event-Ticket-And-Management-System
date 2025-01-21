@@ -7,25 +7,20 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5095/api/auth';
+  private apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/auth';
 
   // State to track login status
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  // State to store user info
+
   private user: { PhoneNumber: string; Password: string; Role: string } | null = null;
 
   constructor(private http: HttpClient) {
     this.checkLoginStatus(); // Initialize login state
   }
 
-  /**
-   * Login the user.
-   * Sends a POST request to the backend with user credentials.
-   * @param user - The user login credentials.
-   * @returns Observable of the login response.
-   */
+
   login(user: { PhoneNumber: string; Password: string; Role: string; }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, user).pipe(
       tap((response: any) => {
@@ -38,38 +33,24 @@ export class AuthService {
     );
   }
 
-  /**
-   * Register a new user.
-   * Sends a POST request to the backend with registration data.
-   * @param registerData - The registration data.
-   * @returns Observable of the register response.
-   */
+ 
   register(registerData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, registerData);
   }
 
-  /**
-   * Logout the user.
-   * Clears the token and updates the login state.
-   */
+
   logout() {
     this.user = null;
     localStorage.removeItem('token'); // Clear token from storage
     this.isLoggedInSubject.next(false); // Update login status
   }
 
-  /**
-   * Get the logged-in user's information.
-   * @returns User info or null if not logged in.
-   */
+ 
   getUser() {
     return this.user;
   }
 
-  /**
-   * Check the login status on app load.
-   * Updates the login state based on the token's presence.
-   */
+ 
   checkLoginStatus() {
     const token = localStorage.getItem('token');
     if (token) {
@@ -77,5 +58,14 @@ export class AuthService {
     } else {
       this.isLoggedInSubject.next(false); // User is not logged in
     }
+  }
+
+
+  checkPhoneNumber(phoneNumber: string) {
+    return this.http.post<{ exists: boolean }>(`${this.apiUrl}/checkPhoneNumber`, { phoneNumber });
+  }
+
+  updatePassword(phoneNumber: string, newPassword: string) {
+    return this.http.post(`${this.apiUrl}/updatePassword`, { phoneNumber, newPassword });
   }
 }

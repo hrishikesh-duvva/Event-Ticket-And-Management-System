@@ -19,7 +19,7 @@ export class EventDetailComponent  implements OnInit {
   selectedScheduleId: number | null = null; // Selected schedule
   isEventLoaded = false;
   userRole: string | null = null;
-  apiUrl = 'http://localhost:5095/api/schedules/schedule/';
+  apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/schedules/schedule/';
 
   constructor(
     public router: Router, // Changed from private to public

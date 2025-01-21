@@ -1,0 +1,108 @@
+.edit-schedules {
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: 'Roboto', Arial, sans-serif;
+    padding: 20px;
+    background-color: #1f1f2f; /* Dark theme */
+    color: #f5e3c0; /* Light text */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  }
+  
+  .edit-schedules h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f1d69f; /* Light color for headings */
+  }
+  
+  .edit-schedules p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #c8c8c8; /* Muted text for details */
+  }
+  
+  .edit-schedules p strong {
+    color: #f5e3c0; /* Bright color for labels */
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .schedule-list {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .schedule-card {
+    background-color: #2b2b2b; /* Dark background for schedule cards */
+    color: #f5e3c0; /* Light text for readability */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .schedule-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
+  
+  .schedule-card p {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  
+  .schedule-card p strong {
+    font-weight: bold;
+    color: #f5e3c0; /* Bright color for emphasis */
+  }
+  
+  /* Add New Schedule Button */
+  button.add-button {
+    background-color: #0066cc;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button.add-button:hover {
+    background-color: #005bb5; /* Darker blue for hover */
+    transform: translateY(-2px); /* Slight lift */
+  }
+  
+  button.add-button:active {
+    background-color: #004999; /* Active state color */
+    transform: translateY(0); /* Reset lift */
+  }
+  
+  /* Edit Button */
+  button.edit-button {
+    background-color: #ff9900;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button.edit-button:hover {
+    background-color: #e68900; /* Darker orange for hover */
+    transform: translateY(-2px);
+  }
+  
+  button.edit-button:active {
+    background-color: #cc7700; /* Active state color */
+    transform: translateY(0);
+  }
+  

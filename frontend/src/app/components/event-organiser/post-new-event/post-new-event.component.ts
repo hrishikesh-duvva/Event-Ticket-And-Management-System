@@ -14,6 +14,7 @@ import { ScheduleService } from '../../../services/schedule.service'; // Assumin
 })
 export class PostNewEventComponent implements OnInit {
   event: EventModel = {
+    eventId:0,
     name: '',
     location: '',
     description: '',

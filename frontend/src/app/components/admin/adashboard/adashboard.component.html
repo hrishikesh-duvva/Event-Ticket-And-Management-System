@@ -1,33 +1,20 @@
-<div class="dashboard">
-  <h1>Admin Dashboard</h1>
-
-  <div class="stats-container">
-    <div class="stat-card">
-      <h2>Total Events</h2>
-      <p>{{ totalEvents }}</p>
-    </div>
-    <div class="stat-card">
-      <h2>Active Events</h2>
-      <p>{{ activeEvents }}</p>
-    </div>
-    <div class="stat-card">
-      <h2>Total Users</h2>
-      <p>{{ totalUsers }}</p>
-    </div>
-    <div class="stat-card">
-      <h2>Active Users</h2>
-      <p>{{ activeUsers }}</p>
+<div class="admin-event-list">
+  <h1>Manage Events</h1>
+  <div *ngIf="events.length === 0">
+    <p>No events available to manage.</p>
+  </div>
+  <div class="event-grid">
+    <div class="event-card" *ngFor="let event of events">
+      <img class="event-img" [src]="event.eventImage" alt="Event Image" />
+      <div class="event-details">
+        <h3>{{ event.name }}</h3>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+      </div>
+      <button class="btn btn-danger" (click)="onDeleteEvent(event.eventId)">
+        Delete Event
+      </button>
     </div>
   </div>
-
-  <h2>Suspicious Events</h2>
-  <div *ngIf="suspiciousEvents.length; else noEvents">
-    <div class="event" *ngFor="let event of suspiciousEvents">
-      <span>{{ event.name }}</span>
-      <button (click)="deleteEvent(event.id)">Delete</button>
-    </div>
-  </div>
-  <ng-template #noEvents>
-    <p>No suspicious events found.</p>
-  </ng-template>
+  <pre></pre>
+  <pre></pre>
 </div>

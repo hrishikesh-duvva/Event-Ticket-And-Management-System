@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     PhoneNumber: string = '';
     Password: string = '';
     Role:string | null ='';
+    loginMessage: string | null = null; 
+  isSuccess: boolean = false;
 
     constructor(private authService: AuthService,private route: ActivatedRoute,private router:Router) {}
     ngOnInit(): void {
@@ -32,6 +34,8 @@ export class LoginComponent implements OnInit {
                 next: (response) => {
                     console.log('Login successful', response);
                     localStorage.setItem('token', response.token);
+                    this.loginMessage = 'Login successful! Redirecting...';
+                    this.isSuccess = true;
 
                     if(this.Role==='EventOrganizer'){
                         this.router.navigate(['/event-organiser/dashboard'])
@@ -42,10 +46,16 @@ export class LoginComponent implements OnInit {
                 },
                 error: (error) => {
                     console.error('Login failed', error);
+                    this.loginMessage = 'Login failed. Please check your credentials.';
+                    this.isSuccess = false;
                 }
             })
         )
         .subscribe();
     }
+    
+    onForgotPassword(): void {
+        this.router.navigate(['/forgot-password']);
+      }
     
 }

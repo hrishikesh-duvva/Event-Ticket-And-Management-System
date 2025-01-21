@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   searchContent: string = '';
   user: any = null; // Store the user data
   
-  apiUrl = 'http://localhost:5095/api/User/'; // Base API URL for fetching user data
+  apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/User/'; 
 
   constructor(private router: Router, private http: HttpClient,private authService: AuthService,private eventService:EventService) {}
 
@@ -48,10 +48,16 @@ export class HeaderComponent implements OnInit {
 
   // Handle search functionality
   onKey(event: any): void {
-    const searchTerm = event.target.value;
-    this.eventService.setCurrentSearchedName(searchTerm);
-    this.router.navigateByUrl('/'); // Navigate to the home page
+    const searchTerm = event.target.value.trim().toLowerCase();
+    this.eventService.setCurrentSearchedName(searchTerm); // Notify the service
   }
+  
+  onCityChange(): void {
+    if (this.selectedCity) {
+      this.eventService.filterByCity(this.selectedCity.trim().toLowerCase());
+    }
+  }
+  
 
   isSidebarActive: boolean = false;
 
@@ -114,5 +120,8 @@ export class HeaderComponent implements OnInit {
         console.error('Error fetching user profile:', err);
       },
     });
+  }
+  onnClickhome(){
+    this.router.navigate(['/events']);
   }
 }

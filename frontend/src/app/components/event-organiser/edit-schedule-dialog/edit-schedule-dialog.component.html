@@ -1,0 +1,155 @@
+<h1>Edit Schedule</h1>
+<div class="dialog-content">
+  <form #scheduleForm="ngForm" class="form-container">
+    <div class="form-group">
+      <label for="sessionName">Session Name</label>
+      <input
+        type="text"
+        id="sessionName"
+        [(ngModel)]="data.sessionName"
+        name="sessionName"
+        required
+        #sessionName="ngModel"
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="sessionName.invalid && sessionName.touched">
+        Session Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+      <input
+        type="datetime-local"
+        id="startTime"
+        [(ngModel)]="data.startTime"
+        name="startTime"
+        required
+        #startTime="ngModel"
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="startTime.invalid && startTime.touched">
+        Start Time is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input
+        type="datetime-local"
+        id="endTime"
+        [(ngModel)]="data.endTime"
+        name="endTime"
+        required
+        #endTime="ngModel"
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="endTime.invalid && endTime.touched">
+        End Time is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="speakerName">Speaker Name</label>
+      <input
+        type="text"
+        id="speakerName"
+        [(ngModel)]="data.speakerName"
+        name="speakerName"
+        required
+        #speakerName="ngModel"
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="speakerName.invalid && speakerName.touched">
+        Speaker Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        [(ngModel)]="data.description"
+        name="description"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="vipRows">VIP Rows</label>
+      <input
+        type="number"
+        id="vipRows"
+        [(ngModel)]="data.vipRows"
+        name="vipRows"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="generalRows">General Rows</label>
+      <input
+        type="number"
+        id="generalRows"
+        [(ngModel)]="data.generalRows"
+        name="generalRows"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="capacity">Capacity</label>
+      <input
+        type="number"
+        id="capacity"
+        [(ngModel)]="data.capacity"
+        name="capacity"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input
+        type="text"
+        id="status"
+        [(ngModel)]="data.status"
+        name="status"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="vipPrice">VIP Price</label>
+      <input
+        type="number"
+        id="vipPrice"
+        [(ngModel)]="data.vipPrice"
+        name="vipPrice"
+        class="form-control"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="generalPrice">General Price</label>
+      <input
+        type="number"
+        id="generalPrice"
+        [(ngModel)]="data.generalPrice"
+        name="generalPrice"
+        class="form-control"
+      />
+    </div>
+    
+  </form>
+</div>
+<div class="dialog-actions">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="scheduleForm.invalid"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+</div>

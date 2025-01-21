@@ -21,7 +21,7 @@ namespace EventTicketingSystem.Controllers
         }
 
         [HttpGet("{userId}")]
-        [Authorize] // Make sure the user is authenticated
+        [Authorize] 
         public async Task<IActionResult> GetUserDetails(int userId)
         {
             var user = await _context.Users

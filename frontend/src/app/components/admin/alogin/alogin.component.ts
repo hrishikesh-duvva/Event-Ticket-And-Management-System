@@ -18,6 +18,8 @@ export class AloginComponent  implements OnInit {
   PhoneNumber: string = '';
     Password: string = '';
     Role:string | null ='Admin';
+    loginMessage: string | null = null; 
+  isSuccess: boolean = false; 
 
     constructor(private aadminService: AdminService,private router: Router,private authService:AuthService) {}
   ngOnInit(): void {
@@ -30,15 +32,20 @@ export class AloginComponent  implements OnInit {
         .pipe(
             tap({
                 next: (response) => {
-                    console.log('Login successful', response);
-                    localStorage.setItem('token', response.token);
+                  console.log('Login successful', response);
+                  localStorage.setItem('token', response.token);
+                  this.loginMessage = 'Login successful! Redirecting...';
+                  this.isSuccess = true;
+                    this.router.navigate(['/admin/dashboard']);
                 },
                 error: (error) => {
                     console.error('Login failed', error);
+                    this.loginMessage = 'Login failed. Please check your credentials.';
+                    this.isSuccess = false;
                 }
             })
         )
         .subscribe();
-        this.router.navigate(['/admin/dashboard']);
+        
     }
 }

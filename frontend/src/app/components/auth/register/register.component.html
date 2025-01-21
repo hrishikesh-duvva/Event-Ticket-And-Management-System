@@ -70,7 +70,7 @@
       </div>
     </div>
   
-    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">
+    <button type="submit" [disabled]="loading ||  registerForm.invalid" class="btn btn-primary">
       Register
     </button>
   </form>

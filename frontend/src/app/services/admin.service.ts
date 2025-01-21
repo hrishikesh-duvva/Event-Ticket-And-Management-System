@@ -12,7 +12,7 @@ export class AdminService {
 
   // Observable for login status
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
-  private apiUrl = 'http://localhost:5095/api/admin';
+  private apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/admin';
 
   constructor(private http: HttpClient) {}
 

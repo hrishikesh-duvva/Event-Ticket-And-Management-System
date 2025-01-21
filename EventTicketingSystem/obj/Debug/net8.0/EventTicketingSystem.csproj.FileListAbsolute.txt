@@ -278,3 +278,4 @@ D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\Ev
 D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\EventTicketingSystem.genruntimeconfig.cache
 D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\ref\EventTicketingSystem.dll
 D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\EventTicketingSystem.sourcelink.json
+D:\hrishi\EventTicketingSystem-updated2\EventTicketingSystem\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

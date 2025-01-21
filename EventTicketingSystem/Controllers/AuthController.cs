@@ -63,5 +63,27 @@ namespace EventTicketingSystem.Controllers
             var token = _authService.GenerateToken(user);
             return Ok(new { token });
         }
+
+        // New API: Check if phone number exists
+        [HttpPost("checkPhoneNumber")]
+        public IActionResult CheckPhoneNumber([FromBody] CheckPhoneNumberDto checkPhoneNumberDto)
+        {
+            var exists = _context.Users.Any(u => u.PhoneNumber == checkPhoneNumberDto.PhoneNumber);
+            return Ok(new { exists });
+        }
+
+        // New API: Update password
+        [HttpPost("updatePassword")]
+        public IActionResult UpdatePassword([FromBody] UpdatePasswordDto updatePasswordDto)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.PhoneNumber == updatePasswordDto.PhoneNumber);
+            if (user == null)
+                return NotFound(new { message = "User not found." });
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(updatePasswordDto.NewPassword);
+            _context.SaveChanges();
+
+            return Ok(new { message = "Password updated successfully" });
+        }
     }
 }

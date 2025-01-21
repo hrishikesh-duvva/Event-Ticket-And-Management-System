@@ -79,6 +79,8 @@ namespace EventTicketingSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Event>> GetEvent(int id)
         {
+            var currentTime = DateTime.UtcNow;
+
             var eventDetails = await _context.Events
                 .Include(e => e.Schedules)
                 .ThenInclude(s => s.TicketTypes)
@@ -90,6 +92,9 @@ namespace EventTicketingSystem.Controllers
             {
                 return NotFound();
             }
+            var filteredSchedules = eventDetails.Schedules
+               .Where(schedule => schedule.EndTime > currentTime)
+               .ToList();
             var eventDto = new GetEventDto
             {
                 EventId = eventDetails.EventId,
@@ -97,7 +102,7 @@ namespace EventTicketingSystem.Controllers
                 Location = eventDetails.Location,
                 Description = eventDetails.Description,
                 EventImage = eventDetails.EventImage,
-                Schedules = eventDetails.Schedules.Select(schedule => new GetScheduleDto
+                Schedules = filteredSchedules.Select(schedule => new GetScheduleDto
                 {
                     ScheduleId = schedule.ScheduleId,
                     SessionName = schedule.SessionName,
@@ -127,7 +132,6 @@ namespace EventTicketingSystem.Controllers
         [Authorize]
         public async Task<ActionResult<IEnumerable<GetEventDto>>> GetEventsByUserId(int userId)
         {
-            // Ensure the user is authorized by checking the token's userId
             var currentUserId = int.Parse(User.FindFirstValue("UserId"));
             if (userId != currentUserId)
             {
@@ -137,8 +141,8 @@ namespace EventTicketingSystem.Controllers
             // Get the events for the user
             var events = await _context.Events
                 .Where(e => e.OrganizerId == userId)
-                .Include(e => e.Schedules)  // Include schedules for each event
-                .ThenInclude(s => s.TicketTypes) // Include ticket types for each schedule if needed
+                .Include(e => e.Schedules)  
+                .ThenInclude(s => s.TicketTypes) 
                 .ToListAsync();
 
             if (events == null || events.Count == 0)
@@ -146,7 +150,6 @@ namespace EventTicketingSystem.Controllers
                 return NotFound("No events found for this user.");
             }
 
-            // Map the events to GetEventDto (not EventDto)
             var eventDtos = events.Select(e => new GetEventDto
             {
                 EventId = e.EventId, // Add EventId if needed
@@ -165,7 +168,6 @@ namespace EventTicketingSystem.Controllers
                     Description = schedule.Description,
                     Capacity = schedule.Capacity,
                     Status = schedule.Status
-                    // No seating details here
                 }).ToList()
             }).ToList();
 
@@ -182,7 +184,6 @@ namespace EventTicketingSystem.Controllers
         [Authorize]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventDto eventDto)
         {
-            // Check if the user has the EventOrganizer role
             var userRole = User.FindFirstValue("UserRole");
             if (userRole != "EventOrganizer")
             {
@@ -197,25 +198,20 @@ namespace EventTicketingSystem.Controllers
                 return NotFound();
             }
 
-            // Check if the user is authorized to modify this event
             if (eventToUpdate.OrganizerId != userId)
             {
                 return Unauthorized("You are not authorized to update this event.");
             }
 
-            // Update fields only if they are provided in the request
             if (eventDto.Name != null) eventToUpdate.Name = eventDto.Name;
             if (eventDto.Location != null) eventToUpdate.Location = eventDto.Location;
             if (eventDto.Description != null) eventToUpdate.Description = eventDto.Description;
             if (eventDto.EventImage != null) eventToUpdate.EventImage = eventDto.EventImage;
 
-            // Mark the entity as modified
             _context.Entry(eventToUpdate).State = EntityState.Modified;
 
-            // Save the changes
             await _context.SaveChangesAsync();
 
-            // Return a NoContent response to indicate the update was successful but no content is returned
             return NoContent();
         }
 
@@ -226,14 +222,14 @@ namespace EventTicketingSystem.Controllers
         public async Task<IActionResult> DeleteEvent(int id)
         {
             var userRole = User.FindFirstValue("UserRole");
-            if (userRole != "EventOrganizer")
+            if (userRole != "Admin")
             {
-                return Unauthorized("Only Event Organizers can delete events.");
+                return Unauthorized("Only Admin can delete events.");
             }
 
             var userId = int.Parse(User.FindFirstValue("UserId"));
             var eventToDelete = await _context.Events
-                .Include(e => e.Schedules)  // Include schedules to handle them first
+                .Include(e => e.Schedules)  
                 .FirstOrDefaultAsync(e => e.EventId == id);
 
             if (eventToDelete == null)
@@ -241,13 +237,9 @@ namespace EventTicketingSystem.Controllers
                 return NotFound();
             }
 
-            // Check if the user is authorized to delete this event
-            if (eventToDelete.OrganizerId != userId)
-            {
-                return Unauthorized("You are not authorized to delete this event.");
-            }
+            
 
-            // Step 1: Delete associated Discounts
+            // Step 1: delete Discounts
             foreach (var schedule in eventToDelete.Schedules)
             {
                 var discounts = await _context.Discounts
@@ -257,26 +249,26 @@ namespace EventTicketingSystem.Controllers
                 _context.Discounts.RemoveRange(discounts);
             }
 
-            // Step 2: Delete associated TicketTypes and Seatings
+            // Step 2: delete TicketTypes and Seatings
             foreach (var schedule in eventToDelete.Schedules)
             {
-                // Remove TicketTypes related to the schedule
+                // remove TicketTypes related to the schedule
                 var ticketTypes = await _context.TicketTypes
                     .Where(t => t.ScheduleId == schedule.ScheduleId)
                     .ToListAsync();
                 _context.TicketTypes.RemoveRange(ticketTypes);
 
-                // Remove Seatings related to the schedule
+                // remove Seatings related to the schedule
                 var seatings = await _context.Seatings
                     .Where(s => s.ScheduleId == schedule.ScheduleId)
                     .ToListAsync();
                 _context.Seatings.RemoveRange(seatings);
             }
 
-            // Step 3: Delete Schedules
+            // Step 3: delete Schedules
             _context.Schedules.RemoveRange(eventToDelete.Schedules);
 
-            // Step 4: Finally delete the Event
+            // Step 4:delete the Event
             _context.Events.Remove(eventToDelete);
             await _context.SaveChangesAsync();
 

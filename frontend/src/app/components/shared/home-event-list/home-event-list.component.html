@@ -1,55 +1,60 @@
 <div>
-  <app-carouselimages />
-</div>
-
-<div class="Events">
-  <h1> Recomended Events</h1>
-  <p-carousel 
-    [value]="filteredEvents" 
-    [numVisible]="numVisible" 
-    [numScroll]="1" 
-    [circular]="true" 
-    [contentClass]="'custom-carousel-content'"
-    [showIndicators]="false">
-    
-    <ng-template let-event pTemplate="item">
-        <div class="event-card" (click)="onClickEvent(event.eventId)">
+    <app-carouselimages></app-carouselimages>
+  </div>
+  
+  <div class="Events">
+    <h1>Recommended Events</h1>
+    <ng-container *ngIf="filteredEvents && filteredEvents.length > 0; else noRecommendedEvents">
+      <p-carousel
+        [value]="filteredEvents"
+        [numVisible]="numVisible"
+        [numScroll]="1"
+        [circular]="true"
+        [contentClass]="'custom-carousel-content'"
+        [showIndicators]="false"
+      >
+        <ng-template let-event pTemplate="item">
+          <div class="event-card" (click)="onClickEvent(event.eventId)">
             <img class="event-img" [src]="event.eventImage" alt="Event Image" />
             <div class="event-details">
-                <h3 class="event-title">{{ event.name }}</h3>
-                <p class="event-genre">{{ event.location }}</p>
-                <!-- <div class="event-rating">
-                    <span>⭐ {{ event.rating }} / 10</span>
-                    <span>⏳ {{ event.votes }} Votes</span>
-                </div> -->
+              <h3 class="event-title">{{ event.name }}</h3>
+              <p class="event-genre">{{ event.location }}</p>
             </div>
-        </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </ng-container>
+    <ng-template #noRecommendedEvents>
+      <p>No recommended events found. Please refine your search.</p>
     </ng-template>
-</p-carousel>
-</div>
-    <img class="mid-banner"  src="assets/images/image7.png" alt="banner" />
-<div class="Events">
-  <h1> Top Trending Events</h1>
-  <p-carousel 
-    [value]="filteredEvents" 
-    [numVisible]="numVisible" 
-    [numScroll]="1" 
-    [circular]="true" 
-    [contentClass]="'custom-carousel-content'"
-    [showIndicators]="false">
-    
-    <ng-template let-event pTemplate="item">
-        <div class="event-card" (click)="onClickEvent(event.eventId)">
+  </div>
+  
+  <img class="mid-banner" src="assets/images/image7.png" alt="banner" />
+  
+  <div class="Events">
+    <h1>Top Trending Events</h1>
+    <ng-container *ngIf="filteredEvents && filteredEvents.length > 0; else noTrendingEvents">
+      <p-carousel
+        [value]="filteredEvents"
+        [numVisible]="numVisible"
+        [numScroll]="1"
+        [circular]="true"
+        [contentClass]="'custom-carousel-content'"
+        [showIndicators]="false"
+      >
+        <ng-template let-event pTemplate="item">
+          <div class="event-card" (click)="onClickEvent(event.eventId)">
             <img class="event-img" [src]="event.eventImage" alt="Event Image" />
             <div class="event-details">
-                <h3 class="event-title">{{ event.name }}</h3>
-                <p class="event-genre">{{ event.location }}</p>
-                <!-- <div class="event-rating">
-                    <span>⭐ {{ event.rating }} / 10</span>
-                    <span>⏳ {{ event.votes }} Votes</span>
-                </div> -->
+              <h3 class="event-title">{{ event.name }}</h3>
+              <p class="event-genre">{{ event.location }}</p>
             </div>
-        </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </ng-container>
+    <ng-template #noTrendingEvents>
+      <p>No trending events found. Please refine your search.</p>
     </ng-template>
-</p-carousel>
-</div>
+  </div>
+  

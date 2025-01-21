@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "VZ3BWh7vmpkypwe6rmZ+3neVlGE9TIrxBclQNuDLmtY=",
+  "Source": "EventTicketingSystem",
+  "BasePath": "_content/EventTicketingSystem",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

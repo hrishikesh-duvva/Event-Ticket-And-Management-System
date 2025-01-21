@@ -1,0 +1,24 @@
+<div class="edit-schedules">
+  <h1>Edit Schedules for: {{ event?.name }}</h1>
+  <p><strong>Location:</strong> {{ event?.location }}</p>
+  <p><strong>Description:</strong> {{ event?.description }}</p>
+
+  <div class="button-group">
+    <button mat-raised-button class="add-button" color="primary" (click)="openAddDialog()">
+      ➕ Add New Schedule
+    </button>
+  </div>
+
+  <div *ngIf="schedules.length > 0" class="schedule-list">
+    <div *ngFor="let schedule of schedules" class="schedule-card">
+      <p><strong>Session:</strong> {{ schedule.sessionName }}</p>
+      <p><strong>Start Time:</strong> {{ schedule.startTime | date: 'short' }}</p>
+      <p><strong>End Time:</strong> {{ schedule.endTime | date: 'short' }}</p>
+      <p><strong>Speaker:</strong> {{ schedule.speakerName }}</p>
+      <p><strong>Description:</strong> {{ schedule.description }}</p>
+      <button mat-button class="edit-button" color="accent" (click)="openEditDialog(schedule)">
+        ✏️ Edit
+      </button>
+    </div>
+  </div>
+</div>

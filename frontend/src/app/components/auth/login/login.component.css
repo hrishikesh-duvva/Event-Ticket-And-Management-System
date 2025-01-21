@@ -57,3 +57,30 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+
+  /* Success and Error Message Styles */
+.success-message {
+  color: #28a745; /* Green for success */
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: #dc3545; /* Red for errors */
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.forgot-password-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.forgot-password-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password-container a:hover {
+  text-decoration: underline;
+}

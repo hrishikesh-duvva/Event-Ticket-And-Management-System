@@ -20,7 +20,7 @@ namespace EventTicketingSystem.Controllers
         }
 
         [HttpPost]
-        [Authorize] // Ensure the user is authenticated
+        [Authorize] 
         public async Task<IActionResult> CreateSupportTicket([FromBody] SupportTicket ticket)
         {
             if (ticket == null || string.IsNullOrWhiteSpace(ticket.Issue))
@@ -31,13 +31,12 @@ namespace EventTicketingSystem.Controllers
             if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
                 return Unauthorized("Invalid user.");
 
-            // Set UserId and other default values
+            
             ticket.UserId = userId;
-            ticket.User = null; // Ensure EF does not try to reattach the user
+            ticket.User = null; 
             ticket.Status = "Pending";
             ticket.CreatedAt = DateTime.UtcNow;
 
-            // Save ticket to the database
             _context.SupportTickets.Add(ticket);
             await _context.SaveChangesAsync();
 

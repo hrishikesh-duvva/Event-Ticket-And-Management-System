@@ -14,9 +14,3 @@
 
 
 
-//public int Capacity { get; set; }
-//public required string Status { get; set; }
-//public int VIPRows { get; set; }
-//public int GeneralRows { get; set; }
-//public decimal VIPPrice { get; set; }
-//public decimal GeneralPrice { get; set; }

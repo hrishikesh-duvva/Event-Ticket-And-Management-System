@@ -20,6 +20,9 @@
           <p>{{ schedule.speakerName }} - {{ schedule.description }}</p>
         </li>
       </ul>
+      <button class="edit-schedule-button" (click)="editSchedules(event.eventId)">
+        Edit Schedules
+      </button>
     </div>
   </div>
 

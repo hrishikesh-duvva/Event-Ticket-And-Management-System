@@ -10,8 +10,8 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class EventService {
-  private apiUrl = 'http://localhost:5095/api/events';
-  private scheduleUrl = 'http://localhost:5095/api/schedules';
+  private apiUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/events';
+  private scheduleUrl = 'https://event-ticket-and-management-system-gpbefvcsbdfshffb.southindia-01.azurewebsites.net/api/schedules';
 
   constructor(private http: HttpClient) {}
 
@@ -79,4 +79,9 @@ export class EventService {
     ];
     return of(images);
   }
+
+  filterByCity(city: string): void {
+    this.currentSearchNameChange.next(city);
+  }
+  
 }

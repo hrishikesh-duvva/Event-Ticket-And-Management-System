@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class RegisterComponent implements OnInit{
   role: string | null = '';
+  loading :Boolean=false;
 
   constructor(private route: ActivatedRoute, private authService: AuthService,private router: Router) {}
 
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit{
     if (this.role) {
       this.router.navigate([`${this.role}/login`]);
       console.log(`Creating account for: ${this.role}`);
+
     } else {
       alert('Please select an option before creating an account.');
     }
@@ -59,8 +61,14 @@ export class RegisterComponent implements OnInit{
           this.registrationStatus = {
             message: 'Registration was successful!',
             type: 'success',
+            
           };
-          this.registrationDetails = registerData; // Save registration details
+          this.registrationDetails = registerData; 
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+            console.log('Navigated to /login');
+          }, 3000);
+          this.loading = false;
         },
         error: (error) => {
           console.error('Registration failed:', error);
@@ -69,6 +77,7 @@ export class RegisterComponent implements OnInit{
             type: 'error',
           };
           this.registrationDetails = null;
+          this.loading = false;
         },
       })
     )

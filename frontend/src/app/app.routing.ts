@@ -17,6 +17,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/support/slogin/slogin.component').then((c) => c.SloginComponent),
   },
+  { 
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./components/auth/forgot-password/forgot-password.component').then((c) => c.ForgotPasswordComponent) //,
+  },
+
   {
     path: 'usersupport/dashboard',
     loadComponent: () =>
@@ -73,6 +79,11 @@ export const routes: Routes = [
     path: ':option/login',
     loadComponent: () =>
       import('./components/auth/login/login.component').then((c) => c.LoginComponent),
+  },
+  { 
+    path: 'event-organiser/edit-schedules/:id',
+    loadComponent:()=>
+      import('./components/event-organiser/edit-schedules/edit-schedules.component').then((c) => c.EditSchedulesComponent),
   },
   { path: '', redirectTo: 'events', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
