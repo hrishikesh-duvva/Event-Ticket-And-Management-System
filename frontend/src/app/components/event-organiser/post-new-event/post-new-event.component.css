@@ -1,145 +1,134 @@
 .post-event {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 5px;
-    color: #444;
-  }
-  
-  input,
-  textarea {
-    width: 95%;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  input:focus,
-  textarea:focus {
-    border-color: rgb(248, 68, 100);
-    box-shadow: 0 0 5px rgba(248, 68, 100, 0.5);
-  }
-  
-  textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: rgb(248, 68, 100);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  button:hover {
-    background-color: rgb(200, 50, 80);
-    transform: scale(1.05);
-  }
-  
-  button:active {
-    transform: scale(0.98);
-  }
-  
-  .schedule-form {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    background: #fafafa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  .schedules ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .schedules li {
-    display: flex;
-    flex-direction: column;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-  }
-  
-  .schedules li strong {
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .schedules li span {
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .schedules {
-    margin-bottom: 20px;
-  }
-  .schedules ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .schedules li {
-    position: relative; /* Required for positioning the delete button */
-    display: flex;
-    flex-direction: column;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .delete-btn {
-    position: absolute; /* Position relative to the <li> */
-    top: 8px;
-    right: 8px;
-    border: none;
-    text-decoration-color: rgb(248, 68, 100);
-    font-size: 1.2rem;
-    line-height: 1rem;
-    cursor: pointer;
-  }
-  
-  .delete-btn:hover {
-    transform: scale(1.1);
-  }
-  
-  .delete-btn:active {
-    transform: scale(0.9);
-  }
-  
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+input,
+textarea {
+  width: 95%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #2b2b2b;
+  box-shadow: 0 0 5px rgba(248, 68, 100, 0.5);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2b2b2b;
+  color: #f5e3c0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #2b2b2b;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Schedule Form - Updated to match the post event form */
+.schedule-form {
+  max-width: 800px;
+  margin: 20px auto; /* Centering the schedule form */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedules {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.schedules ul {
+  list-style: none;
+  padding: 0;
+}
+
+.schedules li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.schedules li strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.schedules li span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  text-decoration-color: #2b2b2b;
+  font-size: 1.2rem;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+}
+
+.delete-btn:active {
+  transform: scale(0.9);
+}

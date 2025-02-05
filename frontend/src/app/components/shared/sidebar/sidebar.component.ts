@@ -39,14 +39,14 @@ export class SidebarComponent implements OnInit {
       icon: 'notifications-outline',
       text: 'Notifications',
       link: '#',
-      disabled: false,
+      disabled: true,
     },
     {
       icon: 'ticket-outline',
       text: 'Purchase History',
       subtext: 'View all your bookings & purchases',
       link: '#',
-      disabled: this.isLoggedIn,
+      disabled: true,
     },
     {
       icon: 'help-circle-outline',
@@ -60,7 +60,7 @@ export class SidebarComponent implements OnInit {
       text: 'Accounts & Settings',
       subtext: 'Location, payments, addresses & more',
       link: '#',
-      disabled: this.isLoggedIn,
+      disabled: true,
     },
   ];
 
